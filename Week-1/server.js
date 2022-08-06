@@ -7,17 +7,14 @@ let server = http.createServer(function (req, res) {
 
   switch (req.url) {
     case "/":
-      res.statusCode = 200;
       contentType = "text/html";
       path = "./index.html";
       break;
     case "/index.js":
-      res.statusCode = 200;
       contentType = "text/js";
       path = "./index.js";
       break;
     case "/style.css":
-      res.statusCode = 200;
       contentType = "text/css";
       path = "./style.css";
   }
@@ -28,6 +25,7 @@ let server = http.createServer(function (req, res) {
       res.statusCode = 404;
       res.end("Sorry, can not find the page!");
     } else {
+      res.statusCode = 200;
       res.write(data);
       res.end();
     }
